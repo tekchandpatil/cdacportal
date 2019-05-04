@@ -1,0 +1,11 @@
+Platform : java framework
+
+Description :
+
+	The main objective is to provide complete services related to CDAC co-ordination, which will help students to get every information about cdac on same platform help the cdac staff to manage students  information and services provided.
+
+
+	This website is designed to attend to all student needs - from getting result online, checking monthly attendance, providing study material. Portal helps us to maintain the database of various property and the students information. It helps us to maintain the student information and also allow adminstration team to access the portal information.
+
+
+
