@@ -35,14 +35,13 @@ public class UserRegiDTO
 		this.landMark = landMark;
 		this.houseNumber = houseNumber;
 	}
-	public UserRegiDTO(Long id, String firstName, String middleName, String lastName, String userName, String password,
+	public UserRegiDTO(Long id, String firstName, String middleName, String lastName, String userName,
 			String dob, String emailId, String mobileNo, String father_MobNo, String userType) {
 		this.id = id;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.userName = userName;
-		this.password = password;
 		this.dob = dob;
 		this.emailId = emailId;
 		this.mobileNo = mobileNo;

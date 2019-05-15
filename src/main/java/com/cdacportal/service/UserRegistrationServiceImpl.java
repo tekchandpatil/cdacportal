@@ -18,6 +18,7 @@ import com.cdacportal.dto.UserRegiDTO;
 import com.cdacportal.entity.Address;
 import com.cdacportal.entity.UserRegistration;
 import com.cdacportal.entity.UserType;
+import com.cdacportal.reprository.AddressReprository;
 import com.cdacportal.reprository.UserRegistrationReprository;
 import com.cdacportal.reprository.UserTypeReprository;
 
@@ -29,6 +30,9 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	
 	@Autowired
 	UserTypeReprository userTypeReprository;
+	
+	@Autowired
+	AddressReprository addressReprository;
 
 	public List<UserRegiDTO> findAllUserDetails(Long userId) {
 
@@ -47,7 +51,23 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		}
 		return userDetails;
 	}
+	
+	public UserRegiDTO findLoginUser(String userName,String password) {
 
+		UserRegiDTO userDetails = userReprository.findUser(userName,password);
+			
+				Address useraddress = addressReprository.findUserAddress(userDetails.getId());
+				userDetails.setAddressid(useraddress.getId());
+				userDetails.setCity(useraddress.getCity());
+				userDetails.setHouseNumber(useraddress.getHouseNumber());
+				userDetails.setPincode(useraddress.getPincode());
+				userDetails.setState(useraddress.getState());
+				userDetails.setStreet(useraddress.getStreet());
+				userDetails.setLandMark(useraddress.getLandMark());
+		
+		return userDetails;
+	}
+	
 	@Override
 	public List<UserType> getUserTypeList() {
 		List<UserType> userTypeList = userTypeReprository.findAll();

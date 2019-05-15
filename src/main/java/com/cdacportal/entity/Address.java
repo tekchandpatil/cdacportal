@@ -31,39 +31,44 @@ public class Address implements Serializable
 	private Long id;
 	
 	@Column(name="city")
-	//@Size(min=2,max=20,message = "City should not be greater than 20")
-	@NotBlank(message = "City is mandatory")	
+	
 	private String city;
 	
 	@Column(name="stateName")
-	//@Size(min=2,max=20,message = "State should not be greater than 20")
-	@NotBlank(message = "State is mandatory")
 	private String state;
 	
 	@Column(name="pincode")
-	//@Size(max=6,message = "Pincode should not be greater than 20")
-	@NotBlank(message = "Pincode is mandatory")
 	private String pincode;
 	
 	@Column(name="streetName")
-	//@Size(min=2,max=30,message = "Street should not be greater than 30")
-	@NotBlank(message = "Street is mandatory")
 	private String street;
 	
 	@Column(name="landMark")
-	//@Size(min=2,max=30,message = "LandMark should not be greater than 30")
-	@NotBlank(message = "LandMark is mandatory")
 	private String landMark;
 	
 	@Column(name="houseNumber")
-//	@Size(min=2,max=20,message = "House Number should not be greater than 20")
-	@NotBlank(message = "House Number is mandatory")
 	private String houseNumber;
 
 
 	@OneToOne
 	@JoinColumn(name="user_id",nullable=false)
 	private UserRegistration user_id;
+
+	public Address() {
+		
+	}
+
+	public Address(Long id, String city, String state, String pincode, String street, String landMark,
+			String houseNumber) {
+		
+		this.id = id;
+		this.city = city;
+		this.state = state;
+		this.pincode = pincode;
+		this.street = street;
+		this.landMark = landMark;
+		this.houseNumber = houseNumber;
+	}
 
 
 	public Long getId() {

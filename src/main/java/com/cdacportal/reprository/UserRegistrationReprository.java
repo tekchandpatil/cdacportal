@@ -11,8 +11,11 @@ import com.cdacportal.entity.UserRegistration;
 
 public interface UserRegistrationReprository extends JpaRepository<UserRegistration, Long> {
 	
-	@Query("select new com.cdacportal.dto.UserRegiDTO(u.id,u.firstName,u.middleName,u.lastName,u.userName,u.password,u.dob,u.emailId, u.mobileNo, u.father_MobNo,u1.userType) from UserRegistration u inner join u.userType u1 on u.id =:userId")
+	@Query("select new com.cdacportal.dto.UserRegiDTO(u.id,u.firstName,u.middleName,u.lastName,u.userName,u.dob,u.emailId, u.mobileNo, u.father_MobNo,u1.userType) from UserRegistration u inner join u.userType u1 on u.id =:userId")
 	List<UserRegiDTO> findAllUser(@Param("userId") Long userId);
+	
+	@Query("select new com.cdacportal.dto.UserRegiDTO(u.id,u.firstName,u.middleName,u.lastName,u.userName,u.dob,u.emailId, u.mobileNo, u.father_MobNo,u1.userType) from UserRegistration u inner join u.userType u1 on u.userName =:userName and u.password =:password")
+	UserRegiDTO findUser(@Param("userName") String userName,@Param("password") String password);
 	
 	@Query("select new com.cdacportal.dto.UserRegiDTO(a.id,a.city,a.state,a.pincode,a.street,a.landMark,a.houseNumber) from Address a where a.user_id.id =:userid")
 	UserRegiDTO findUserAddress(@Param("userid") Long userid);

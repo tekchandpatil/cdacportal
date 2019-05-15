@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -73,7 +74,20 @@ public class UserListAction {
 		}
 		return new ResponseEntity<List<UserRegiDTO>>(userDetails, HttpStatus.OK);
 	}
-
+	
+	
+	@PostMapping(value = "/getLogin", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody UserRegiDTO getLogin(@RequestBody String data) {
+		JSONObject jObj=new JSONObject(data);
+		
+		UserRegiDTO userDetails = userService.findLoginUser(jObj.getString("userName"),jObj.getString("password"));
+		log.debug("userDetails=>" + userDetails);
+		
+		return userDetails;
+	}
+	
+	
+	
 	@GetMapping(value = "/portalImgList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PortalImages>> portalImgList() {
 
@@ -100,11 +114,11 @@ public class UserListAction {
 		return new ResponseEntity<List<PortalImages>>(portalImgWithPathList, HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/portalImgSave")
+	@PostMapping(value = "/portalImgSave", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String portalImgSave(@RequestParam("file") MultipartFile file) {
 		String fileName = null;
 		try {
-			fileName = portalImagesService.UploadPortalImage(file, Constants.PORTAL_IMG_PATH);
+			fileName = portalImagesService.UploadPortalImage(file, Constants.PORTAL_IMG_PATH1);
 			if (fileName == null) {
 				return file.getOriginalFilename() + " Image not Uploaded SuccessFully ";
 			}
