@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.cdacportal.dto.UserRegiDTO;
+
 import com.cdacportal.entity.UserRegistration;
 
 public interface UserRegistrationReprository extends JpaRepository<UserRegistration, Long> {
