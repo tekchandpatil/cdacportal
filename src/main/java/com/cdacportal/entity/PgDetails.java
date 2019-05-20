@@ -19,20 +19,14 @@ public class PgDetails
 	private int id;
 	
 	@Column(name="broker_name")
-	@Size(min=8,max=40,message = "Event Name should not be greater than 40")
-	@NotBlank(message = "Broker Name is mandatory")
 	private String broker_name;
 	
 	@Column(name="broker_mob_no")
-	@Pattern(regexp="(0/91)?[7-9][0-9]{9}",message="Please enter the Valid Number")
-	@Size(max=10,message = "broker_mob_noshould not be greater than 10")
-	@NotBlank(message = "Broker Mobile Number is mandatory")
 	private String broker_mob_no;
 	
 	@Column(name="location")
-	@Size(min=2,max=40,message = "Location should not be greater than 40")
-	@NotBlank(message = "Location is mandatory")
 	private String location;
+	
 	public int getId() {
 		return id;
 	}

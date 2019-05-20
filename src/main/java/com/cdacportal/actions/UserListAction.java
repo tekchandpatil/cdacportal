@@ -43,26 +43,14 @@ public class UserListAction {
 	@Autowired
 	UserRegistrationServiceImpl userService;
 
-	@Autowired
-	PgDetailsServiceImpl pgDetailsService;
-
+	
 	@Autowired
 	PortalImagesServiceImpl portalImagesService;
 
 	@Autowired
 	EventServiceImpl eventService;
 
-	@GetMapping(value = "/pgList", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<PgDetails>> pgList() {
-
-		List<PgDetails> pgDetails = pgDetailsService.findAllPgDetails();
-		log.debug("pgDetails=>" + pgDetails);
-		if (pgDetails.isEmpty()) {
-			return new ResponseEntity<List<PgDetails>>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<List<PgDetails>>(pgDetails, HttpStatus.OK);
-	}
-
+	
 	@PostMapping(value = "/userList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<UserRegiDTO>> listAllUsers(@RequestBody String data) {
 		JSONObject jObj=new JSONObject(data);

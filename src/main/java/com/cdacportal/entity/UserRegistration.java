@@ -32,50 +32,30 @@ public class UserRegistration implements Serializable {
 	private Long id;
 
 	@Column(name = "firstName")
-	//@Size(min = 2, max = 20, message = "First Name should not be greater than 20")
-	@NotBlank(message = "First Name is mandatory")
 	private String firstName;
 
 	@Column(name = "middleName")
-//	@Size(min = 2, max = 20, message = "Middle Name should not be greater than 20")
-	@NotBlank(message = "Middle Name is mandatory")
 	private String middleName;
 
 	@Column(name = "lastName")
-	//@Size(min = 2, max = 20, message = "Last Name should not be greater than 20")
-	@NotBlank(message = "Last Name is mandatory")
 	private String lastName;
 
 	@Column(name = "userName")
-	//@Size(min = 5, max = 8, message = "UserName should not be greater than 8")
-	//@Pattern(regexp = "^[a-zA-Z0-9]{8}", message = "User Name Should be eg. abc123")
-	@NotBlank(message = "User Name is mandatory")
 	private String userName;
 
 	@Column(name = "password")
-	//@Size(min = 2, max = 20, message = "Password should not be greater than 20")
-	@NotBlank(message = "Password is mandatory")
 	private String password;
 
 	@Column(name = "dob")
-	@NotBlank(message = "DOB is mandatory")
 	private String dob;
 
 	@Column(name = "emailId")
-	//@Pattern(regexp = ".+@.+\\.[a-z]+")
-	//@Email(message = "Email should be valid")
 	private String emailId;
 
 	@Column(name = "studMobNo")
-//	@Pattern(regexp = "(0/91)?[7-9][0-9]{9}", message = "Please enter the Valid Number")
-	//@Size(max = 10, message = "Mobile Number should not be greater than 10")
-	@NotBlank(message = "Mobile No. is mandatory")
 	private String mobileNo;
 
 	@Column(name = "fatherMobNo")
-	//@Pattern(regexp = "(0/91)?[7-9][0-9]{9}", message = "Please enter the Valid Number")
-	//@Size(max = 10, message = "Mobile Number should not be greater than 10")
-	@NotBlank(message = "Mobile No. is mandatory")
 	private String father_MobNo;
 
 

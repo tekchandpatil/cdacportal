@@ -22,16 +22,12 @@ public class Event implements Serializable{
 	private int id ;
 	
 	@Column(name="event_name")
-	@Size(min=2,max=20,message = "Event Name should not be greater than 20")
-	@NotBlank(message = "Event Name is mandatory")	
 	private String event_name;
 	
 	@Column(name="event_date")
-	@NotBlank(message = "Event Date is mandatory")
 	private String event_date;
 	
 	@Column(name="event_description")
-	@NotBlank(message = "Event Description is mandatory")
 	private String event_description;
 	
 	public int getId() {
