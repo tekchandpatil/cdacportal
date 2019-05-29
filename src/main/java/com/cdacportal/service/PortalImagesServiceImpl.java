@@ -38,7 +38,7 @@ public class PortalImagesServiceImpl implements PortalImagesService {
 		PortalImages pImg = new PortalImages();
 		if (fileName != null) {
 			String filename=new String(fileName);
-			System.out.println(filename);
+			log.debug(filename);
 			SerialBlob blob;
 			try {
 				blob = new SerialBlob(fileName);

@@ -26,6 +26,11 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * @author Tekchand
+ *
+ */
+
 @RestController
 @RequestMapping("/portal")
 public class PortalAction {
@@ -37,6 +42,10 @@ public class PortalAction {
 	
 	@Autowired
 	EventServiceImpl eventService;
+	
+	/*
+	 * This method is getting portal ImageList
+	*/
 	
 	@GetMapping(value = "/portalImgList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PortalImages>> portalImgList() {
@@ -64,6 +73,10 @@ public class PortalAction {
 		return new ResponseEntity<List<PortalImages>>(portalImgWithPathList, HttpStatus.OK);
 	}
 
+	/*
+	 * This method for save portalImage
+	 **/
+	
 	@PostMapping(value = "/portalImgSave", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String portalImgSave(@RequestParam("file") MultipartFile file) {
 		String fileName = null;
@@ -78,6 +91,9 @@ public class PortalAction {
 		return fileName + " Image Uploaded SuccessFully ";
 	}
 
+	/*
+	 * this method getting notice Board List
+	*/
 	@GetMapping(value = "/noticeList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Event>> noticeList() {
 		List<Event> eventList = eventService.getEventList();

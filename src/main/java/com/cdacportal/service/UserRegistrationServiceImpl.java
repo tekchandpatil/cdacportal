@@ -11,6 +11,8 @@ import javax.transaction.Transactional;
 import org.hibernate.integrator.spi.Integrator;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,7 @@ import com.cdacportal.reprository.UserTypeReprository;
 @Service
 @Transactional
 public class UserRegistrationServiceImpl implements UserRegistrationService {
+	public static Logger log = LoggerFactory.getLogger(UserRegistrationServiceImpl.class);
 	@Autowired
 	UserRegistrationReprository userReprository;
 	
@@ -64,7 +67,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 				userDetails.setState(useraddress.getState());
 				userDetails.setStreet(useraddress.getStreet());
 				userDetails.setLandMark(useraddress.getLandMark());
-		
+				log.debug(userDetails.toString());
 		return userDetails;
 	}
 	
@@ -101,10 +104,8 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		user.setDob((String)jobj.get("dob"));
 		user.setUserType(usertype);
 		a.setUser_id(user);
-//		List<Address> ad=new ArrayList<>();
-//		ad.add(a);
 		user.setAddress(a);
-		System.out.println(jobj.get("firstName"));
+		log.debug(jobj.get("firstName").toString());
 		userReprository.save(user);
 		return "Save";
 	}
@@ -114,8 +115,6 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		
 		
 		JSONObject jobj= jsonObj.getJSONObject(0);
-//		JSONObject jobjadd= jobj.getJSONObject("address");
-//		JSONObject jobjuType= jobj.getJSONObject("usertype");
 		UserRegistration user=new UserRegistration();
 		Address a=new Address();
 		UserType usertype=new UserType();
@@ -140,8 +139,6 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		UserType usertype1 = userTypeReprository.find(userttype);
 		user.setUserType(usertype1);
 		a.setUser_id(user);
-//		List<Address> ad=new ArrayList<>();
-//		ad.add(a);
 		user.setAddress(a);
 		userReprository.save(user);
 		return "Save";

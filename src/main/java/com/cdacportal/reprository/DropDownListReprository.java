@@ -1,6 +1,5 @@
 package com.cdacportal.reprository;
 
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

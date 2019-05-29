@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cdacportal.entity.PgDetails;
 import com.cdacportal.service.PgDetailsServiceImpl;
 
+/**
+ * @author Tekchand
+ *
+ */
 @RestController
 @RequestMapping("/pgDetails")
 public class PgDetailsAction {
@@ -24,6 +28,9 @@ public class PgDetailsAction {
 	@Autowired
 	PgDetailsServiceImpl pgDetailsService;
 	
+	/*
+	 * This method is getting Pgdetails List
+	 * */
 	
 	@GetMapping(value = "/pgList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PgDetails>> pgList() {
